@@ -1,8 +1,8 @@
-from colorama import init
+import colorama
 from colorama import Fore, Back, Style
-init()
+colorama.init()
 
-player_pantry = {'lemon_cups': 0, 'sugar_cups': 0, 'cups_cups': 0, 'cash': 15.00, 'savings': 0}
+player_pantry = {'lemon_cups': 0, 'sugar_cups': 0, 'cups_cups': 0, 'cash': 15.00, 'savings': 0, 'signs': 0}
 
 def lem_title():
     print(Style.BRIGHT + Fore.YELLOW)
@@ -25,9 +25,15 @@ def inventory():
     else:
         print(Style.BRIGHT + Fore.WHITE + "%d bags of sugar" % player_pantry['sugar_cups'])
     if player_pantry['cups_cups'] == 1:
-        print(Style.BRIGHT + Fore.CYAN + "%d cup\n" % player_pantry['cups_cups'])
+        print(Style.BRIGHT + Fore.CYAN + "%d cup" % player_pantry['cups_cups'])
     else:
-        print(Style.BRIGHT + Fore.CYAN + "%d cups\n" % player_pantry['cups_cups'])
+        print(Style.BRIGHT + Fore.CYAN + "%d cups" % player_pantry['cups_cups'])
+    if player_pantry['signs'] == 1:
+        print(Style.BRIGHT + Fore.CYAN + "%d sign\n" % player_pantry['signs'])
+    else:
+        print(Style.BRIGHT + Fore.CYAN + "%d signs\n" % player_pantry['signs'])
+
+
     print(Fore.GREEN + "%.2f in cash" % player_pantry['cash'])
     print("%.2f in savings" % player_pantry['savings'])
 
