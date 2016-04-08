@@ -1,4 +1,4 @@
-#lots of work needed here to predict tomorrow's weather, hold that value and then overwrite that onto the current weather when the day increments.
+#work needed here to predict tomorrow's weather, hold that value and then overwrite that onto the current weather when the day increments.
 
 import random
 current_weather = weather_a
