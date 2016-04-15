@@ -3,7 +3,25 @@ import colorama
 from colorama import Fore, Back, Style
 colorama.init()
 
-player_pantry = {'day': 1, 'lemon_cups': 0, 'sugar_cups': 0, 'cups_cups': 0, 'cash': 15.00, 'savings': 0, 'signs': 0, 'current': "Sunny and Warm", 'future': ""}
+def weather():
+    def randomizer(): #create a nested function to call the randomizer for generating the future weather states
+        weather = ['Sunny','Partly Cloudy','Overcast','Drizzling','Rainy'] #Weather options
+        temp = ['Hot','Warm','Cool','Cold'] #Temperature options
+        rand_weth = random.choice(weather)
+        rand_temp = random.choice(temp)
+        return rand_weth, rand_temp
+    
+    rand_weth, rand_temp = randomizer()
+    future_weather_a = rand_weth
+    future_temp_a = rand_temp
+    
+    rand_weth, rand_temp = randomizer()
+    future_weather_b = rand_weth
+    future_temp_b = rand_temp
+    return future_weather_a, future_temp_a, future_weather_b, future_temp_b
+future_weather_a, future_temp_a, future_weather_b, future_temp_b = weather()
+
+player_pantry = {'day': 1, 'lemon_cups': 0, 'sugar_cups': 0, 'cups_cups': 0, 'cash': 15.00, 'savings': 0, 'signs': 0, 'current': future_weather_a + " and " + future_temp_a, 'future': future_weather_b + " and " + future_temp_b} 
 
 def lem_title():
     print(Style.BRIGHT + Fore.YELLOW)
@@ -34,20 +52,6 @@ def inventory():
         print(Style.BRIGHT + Fore.CYAN + "%d cups\n" % player_pantry['cups_cups'])
     print(Fore.GREEN + "%.2f in cash" % player_pantry['cash'])
     print("%.2f in savings" % player_pantry['savings'])
-
-def weather():
-    def randomizer(): #create a nested function to call the randomizer for generating the future weather states
-        weather = ['Sunny','Partly Cloudy','Overcast','Drizzling','Rainy'] #Weather options
-        temp = ['Hot','Warm','Cool','Cold'] #Temperature options
-        rand_weth = random.choice(weather)
-        rand_temp = random.choice(temp)
-        return rand_weth, rand_temp
-    future_weather_a = ""
-    future_weather_b = ""
-    future_temp_a = ""
-    future_temp_b = ""
-
-    
 def input_num2(prompt="How much cash to add: "):
     while True:
         num_str = input(prompt).strip()
